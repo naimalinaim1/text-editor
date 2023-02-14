@@ -35,6 +35,26 @@ function toggleStatement (selectElement, condition, elementId, property, value) 
     }
 }
 
+function removeSelect (side) {
+    if (side === 'left') {
+        elementSelectById('align-center').classList.remove('hov');
+        elementSelectById('align-right').classList.remove('hov');
+        elementSelectById('align-justify').classList.remove('hov');
+    } else if (side === 'right') {
+        elementSelectById('align-center').classList.remove('hov');
+        elementSelectById('align-left').classList.remove('hov');
+        elementSelectById('align-justify').classList.remove('hov');
+    } else if(side === 'center') {
+        elementSelectById('align-right').classList.remove('hov');
+        elementSelectById('align-left').classList.remove('hov');
+        elementSelectById('align-justify').classList.remove('hov');
+    } else if (side === 'justify') {
+        elementSelectById('align-right').classList.remove('hov');
+        elementSelectById('align-left').classList.remove('hov');
+        elementSelectById('align-center').classList.remove('hov');
+    }
+}
+
 //  bold button
 const bold = elementSelectById('text-bold');
 bold.addEventListener('click', function () {
@@ -75,6 +95,11 @@ alignLeft.addEventListener('click', function () {
     if (!con.align.left) {
         isAlignLeft = 'left';
     }
+
+    con.align.right = false;
+    con.align.center = false;
+    con.align.justify = false;
+    removeSelect('left');
     toggleStatement(alignLeft, con.align.left, 'text-area', 'textAlign', isAlignLeft);
 })
 
@@ -87,6 +112,10 @@ alignRight.addEventListener('click', function () {
         isAlignRight = 'left';
     }
 
+    con.align.left = false;
+    con.align.center = false;
+    con.align.justify = false;
+    removeSelect('right');
     toggleStatement(alignRight, con.align.right, 'text-area', 'textAlign', isAlignRight);
 })
 //  align center button
@@ -97,6 +126,10 @@ alignCenter.addEventListener('click', function () {
     if (!con.align.center) {
         isAlignCenter = 'left';
     }
+    con.align.left = false;
+    con.align.right = false;
+    con.align.justify = false;
+    removeSelect('center');
 
     toggleStatement(alignCenter, con.align.center, 'text-area', 'textAlign', isAlignCenter);
 })
@@ -109,12 +142,17 @@ alignJustify.addEventListener('click', function () {
         isAlignJustify = 'left';
     }
 
+    con.align.left = false;
+    con.align.right = false;
+    con.align.center = false;
+    removeSelect('justify');
+
     toggleStatement(alignJustify, con.align.justify, 'text-area', 'textAlign', isAlignJustify);
 })
 
 // font size
 const fontSize = elementSelectById('font-size-field');
-fontSize.addEventListener('change', function (event) {
+fontSize.addEventListener('input', function (event) {
     let value = event.target.value;
     if (value > 150) {
         event.target.value = '150';
