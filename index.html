@@ -10,6 +10,18 @@
 
     <!-- font awesome icons cdn link -->
     <script src="https://kit.fontawesome.com/638dfe9f71.js" crossorigin="anonymous"></script>
+
+    <style>
+        .hov {
+            color: white;
+            background: #0C4A6E !important;
+        }
+        textarea {
+            width: 100%;
+            min-height: 400px;
+
+        }
+    </style>
 </head>
 <body>
     <!-- header start -->
@@ -33,14 +45,14 @@
                         <button id="align-justify" class="px-3 py-2 bg-slate-300 hover:bg-sky-900 hover:text-white rounded-md"><i class="fa-solid fa-align-justify"></i></button>
                     </div>
                     <div class="flex gap-3 items-center mb-3">
-                        <input id="font-field" class="w-14 px-2 py-1 rounded-md font-semibold" type="number" value="16">
-                        <p class="mr-2"><i class="fa-solid fa-font"></i></p>
+                        <input id="font-size-field" min="8" max="150" class="w-14 px-2 py-1 rounded-md font-semibold" type="number" value="16">
+                        <p class="mr-2"><i id="icon-color-change" class="fa-solid fa-font"></i></p>
                         <input id="color-field" type="color">
                     </div>
                 </div>
                 <div class="border-b border-slate-300 mt-5 mb-10"></div>
                 <div>
-                    <textarea  id="text-area" class="max-w-full p-2 rounded-md bg-slate-100" name="text-area" cols="120" rows="17"></textarea>                    
+                    <textarea  id="text-area" class="max-w-full p-2 rounded-md bg-slate-100" name="text-area"></textarea>                    
                 </div>
             </div>
         </section>
